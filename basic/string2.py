@@ -17,7 +17,11 @@
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-  return
+  if len(s)>=3:
+    if s[-3:]=='ing':
+      return s+'ly'
+    return s+'ing'
+  return s
 
 
 # E. not_bad
@@ -30,7 +34,12 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
+  bad_index = s.find('bad')
+  not_index = s.find('not')
+  if not_index != -1 and bad_index !=-1:
+    if bad_index>not_index:
+      return s[0:not_index]+'good'+s[bad_index+3:]
+  return s
 
 
 # F. front_back
@@ -42,7 +51,17 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+  def front(a):
+    if len(a)%2==0:
+      return a[0:len(a)//2]
+    return a[0:len(a)//2+1]
+  
+  def back(a):
+    if len(a)%2==0:
+      return a[len(a)//2:]
+    return a[len(a)//2+1:]
+
+  return front(a)+front(b)+back(a)+back(b)
 
 
 # Simple provided test() function used in main() to print
