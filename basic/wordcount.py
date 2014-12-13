@@ -45,6 +45,44 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
+def process_lines(line, dict):
+  words = line.split()
+  for w in words:
+    nw = w.lower()
+    if nw in dict.keys():
+      dict[nw] += 1
+    else:
+      dict[nw] = 1
+
+def print_dict(dict):
+  for k in sorted(dict.keys()):
+    print k+' '+str(dict[k])
+
+def get_dict(filename):
+  dict = {}
+  f = open(filename, 'rU')
+  
+  for line in f:
+    process_lines(line, dict)
+  f.close()
+  return dict
+  
+
+def print_words(filename):
+  dict = get_dict(filename)
+  print_dict(dict)
+
+def print_top(filename):
+  dict = get_dict(filename)
+  #Sort dict values and pickup top 20
+  def get_second(item):
+    return item[1]
+
+  items = sorted(dict.items(), key=get_second, reverse=True)
+  i = 0
+  while i<20 and i<len(items):
+    print items[i][0]+' '+str(items[i][1])
+    i+=1
 ###
 
 # This basic command line argument parsing code is provided and
