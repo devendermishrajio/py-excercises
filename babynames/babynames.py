@@ -81,7 +81,7 @@ def extract_names(filename):
   for name in sorted(dict.keys()):
     my_list.append(name +' '+str(dict[name]))
   f.close()
-  print my_list
+  #print my_list
   return my_list
 
 def main():
@@ -106,7 +106,8 @@ def main():
   # or write it to a summary file
   if not summary:
     for file in args:
-      extract_names(file)
-      
+      name_list = extract_names(file)
+      print name_list
+
 if __name__ == '__main__':
   main()
