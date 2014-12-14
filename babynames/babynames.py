@@ -74,10 +74,15 @@ def extract_names(filename):
     return dict
   
   dict = find_names_and_ranks(f)
-  print dict
-
-  return
-
+  #print dict
+  
+  my_list = []
+  my_list.append(year)
+  for name in sorted(dict.keys()):
+    my_list.append(name +' '+str(dict[name]))
+  f.close()
+  print my_list
+  return my_list
 
 def main():
   # This command-line parsing code is provided.
