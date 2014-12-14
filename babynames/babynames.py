@@ -106,7 +106,7 @@ def main():
   for file in args:
     name_list = extract_names(file)
     if not summary:
-      print name_list
+      print '\n'.join(name_list)
     else:
       summaryfile = file+'.summary'
       sf = open(summaryfile, 'w')
