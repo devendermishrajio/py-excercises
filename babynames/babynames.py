@@ -96,7 +96,6 @@ def main():
 
   # Notice the summary flag and remove it from args if it is present.
   summary = False
-  summaryfile = ''
   if args[0] == '--summaryfile':
     summary = True
     del args[0]
@@ -104,10 +103,16 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  if not summary:
-    for file in args:
-      name_list = extract_names(file)
+  for file in args:
+    name_list = extract_names(file)
+    if not summary:
       print name_list
+    else:
+      summaryfile = file+'.summary'
+      sf = open(summaryfile, 'w')
+      names = '\n'.join(name_list)
+      sf.write(names)
+      sf.close()
 
 if __name__ == '__main__':
   main()
