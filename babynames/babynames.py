@@ -51,7 +51,31 @@ def extract_names(filename):
     return year.group()
   
   year = find_year(f)
-  print year
+  #print year
+  
+  def find_names_and_ranks(f):
+    dict = {}
+    f.seek(0)
+    names = re.findall(r'<td>([0-9]+)</td><td>\s*([a-zA-Z]+)\s*</td><td>\s*([a-zA-Z]+)\s*</td>', f.read())
+    for row in names:
+      #print row[0] + ' ' + row[1] + ' ' + row[2]
+      if not row[1] in dict.keys():
+        dict[row[1]] = int(row[0])
+      else:
+        if int(row[0])<dict[row[1]]:
+          dict[row[1]] = int(row[0])
+      
+      if not row[2] in dict.keys():
+        dict[row[2]] = int(row[0])
+      else:
+        if int(row[0])<dict[row[2]]:
+          dict[row[2]] = int(row[0])
+  
+    return dict
+  
+  dict = find_names_and_ranks(f)
+  print dict
+
   return
 
 
