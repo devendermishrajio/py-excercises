@@ -1,5 +1,13 @@
 ---
+sudo: false
 language: python
 python:
     - "2.7"
+install:
+    - python "basic/list1.py"
+    - python "basic/list2.py"
+    - python "basic/mimic.py"
+    - python "basic/string1.py"
+    - python "basic/string2.py"
+    - python "basic/wordcount.py"
 
