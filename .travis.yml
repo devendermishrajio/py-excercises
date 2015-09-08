@@ -11,4 +11,6 @@ install:
     - python "basic/string2.py"
     - python basic/wordcount.py --count basic/alice.txt
 
+script:
+    - "Echo Hello World!"
 
