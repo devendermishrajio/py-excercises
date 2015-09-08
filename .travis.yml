@@ -6,8 +6,9 @@ python:
 install:
     - python "basic/list1.py"
     - python "basic/list2.py"
-    - python "basic/mimic.py"
+    - python basic/mimic.py basic/alice.txt
     - python "basic/string1.py"
     - python "basic/string2.py"
-    - python "basic/wordcount.py"
+    - python basic/wordcount.py --count basic/alice.txt
+
 
