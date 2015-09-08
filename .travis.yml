@@ -12,5 +12,5 @@ install:
     - python basic/wordcount.py --count basic/alice.txt
 
 script:
-    - "Echo Hello World!"
+    - echo "Hello World!"
 
